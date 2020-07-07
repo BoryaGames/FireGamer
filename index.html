@@ -4,13 +4,24 @@
 </style>
 <script>
 function fast() {
-document.body.innerHTML = `<center><h1>Быстрый вход</h1><br/>Введите ID Вашего сервера:<br/><input type="text" placeholder="ID" id="id" required autocomplete="off"><br/><button onclick="login()">Войти</button></center>`;
+document.body.innerHTML = `<center><h1>Быстрый вход</h1><br/>Введите ID Вашего сервера:<br/><input type="text" placeholder="ID" id="id" required autocomplete="off"><br/><button onclick="login(document.querySelector('#id').value)">Войти</button></center>`;
 }
 function simple() {
 document.body.innerHTML = `<center><h1>Обычный вход</h1><br/>"Установите" бота по ссылке ниже и всё автоматически авторизуется!<br/><a href=""></a></center>`
 }
 window.onload = function() {
-
+var ex_url = location.search.substring(1);
+var param = ex_url.split('&');
+var data = new Array();
+for (i = 0; i < param.length; i++) {
+var b = param[i].split('=');
+data[b[0]] = unescape(b[1]);
+}
+if (ex_url.startsWith("error")) {
+location = "index.html";
+} else {
+login(data["guild_id"]);
+}
 }
 </script>
 </head>
