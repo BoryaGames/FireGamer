@@ -4,7 +4,10 @@
 </style>
 <script>
 function fast() {
-document.body.innerHTML = `<center><h1>Быстрый вход</h1><br/>Введите ID Вашего сервера:<br/><input type="text" placeholder="ID" id="id" required autocomplete="off"></center>`;
+document.body.innerHTML = `<center><h1>Быстрый вход</h1><br/>Введите ID Вашего сервера:<br/><input type="text" placeholder="ID" id="id" required autocomplete="off"><br/><button onclick="login()">Войти</button></center>`;
+}
+function simple() {
+document.body.innerHTML = `<center><h1>Обычный вход</h1><br/>"Установите" бота по ссылке ниже и всё автоматически авторизуется!<br/><a href=""></a></center>`
 }
 </script>
 </head>
@@ -14,7 +17,7 @@ document.body.innerHTML = `<center><h1>Быстрый вход</h1><br/>Введ
 <br/>
 <button onclick="fast()">Быстрый (эксперементально)</button>
 <br/>
-<button>Обычный</button>
+<button onclick="simple()">Обычный</button>
 </center>
 </body>
 </html>
