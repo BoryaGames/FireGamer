@@ -17,10 +17,12 @@ for (i = 0; i < param.length; i++) {
 var b = param[i].split('=');
 data[b[0]] = unescape(b[1]);
 }
-if (ex_url.startsWith("error") && !data["guild_id"] && !ex_url.startsWith("code=")) {
+if (ex_url.startsWith("error")) {
 location = "index.html";
 } else {
+if (data["guild_id"] && ex_url.startsWith("code=")) {
 login(data["guild_id"]);
+}
 }
 }
 function login(id) {
