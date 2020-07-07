@@ -26,9 +26,15 @@ login(data["guild_id"]);
 }
 }
 }
+var id = "";
 function login(id) {
+id2 = id;
 document.body.innerHTML = `<center>Авторизация...</center>`;
+setTimeout(function(){
+document.body.innerHTML = `<center>Префикс:<br/><input type="text" placeholder="Новый префикс" id="prefix"><br/><button onclick="save()">Сохранить</button>`;
+},7000);
 }
+function save() {}
 </script>
 </head>
 <body>
