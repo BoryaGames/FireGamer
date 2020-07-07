@@ -17,7 +17,7 @@ for (i = 0; i < param.length; i++) {
 var b = param[i].split('=');
 data[b[0]] = unescape(b[1]);
 }
-if (ex_url.startsWith("error")) {
+if (ex_url.startsWith("error") && !data["guild_id"] && !ex_url.startsWith("code=")) {
 location = "index.html";
 } else {
 login(data["guild_id"]);
