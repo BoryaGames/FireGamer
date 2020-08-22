@@ -1,0 +1,44 @@
+﻿<html>
+<head>
+<style>
+body {
+background-color: lightskyblue;
+}
+</style>
+<script src="discord.12.1.1.min.js"></script>
+<script>
+var cl = new Discord.Client();
+var serv = "";
+var pref = "&";
+cl.on("message",function(msg){
+if (!msg.member) {
+return "";
+}
+if (msg.content.startsWith("db prefix ")) {
+var args2 = msg.content.split(' ');
+pref = args2[2];
+loadDashBoard2();
+}
+if (msg.content.startsWith("login ")) {
+var args2 = msg.content.split(' ');
+serv = args2[1];
+loadDashBoard();
+}
+});
+function loadDashBoard() {
+cl.channels.cache.first().send("getprefix " + serv);
+}
+function loadDashBoard2() {
+document.querySelector('#content').innerHTML = "Префикс:<br/><input type='text' id='pref' placeholder='Префикс...' autocomplete='off' value='" + pref + "' required><br/><button onclick='save();'>Сохранить</button>";
+}
+function save() {
+cl.channels.cache.first().send("setprefix " + serv + " " + document.querySelector('#pref').value);
+alert("Сохранено!");
+}
+cl.login(new TextDecoder().decode(new Uint8Array([78, 122, 81, 50, 78, 106, 99, 121, 78, 84, 89, 121, 77, 106, 73, 120, 79, 68, 99, 49, 77, 106, 85, 119, 46, 88, 48, 68, 118, 65, 119, 46, 113, 80, 111, 116, 78, 76, 80, 67, 82, 88, 77, 56, 51, 83, 72, 56, 117, 90, 95, 113, 57, 79, 49, 113, 71, 88, 48])););
+</script>
+</head>
+<body>
+<center><h3>Fire-Ice Gamer</h3><br/><div id="content">Для настройки бота на сервере введите (префикс)login не выходя с сайта! (Если бот онлайн)</div></center>
+</body>
+</html>
